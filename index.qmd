@@ -1245,7 +1245,7 @@ ggplot2::ggplot() +
 
 - [Definición de escenarios operativos o epimiológicos de la tranmisión activa](https://unrivaled-cranachan-34af05.netlify.app)
 
-- Manual del manejo integrado de las arbovirosis.
+- [Manual del manejo integrado de las arbovirosis en México](https://sunny-croquembouche-a7edeb.netlify.app).
 
 - [Manual para la identificación de los hotspots de la tranmisión de dengue en R](https://fdzul.github.io/manual_hotspots/)
 
