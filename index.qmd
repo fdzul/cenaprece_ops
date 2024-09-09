@@ -1,24 +1,77 @@
 ---
-title: "Untitled"
-format: revealjs
-editor: visual
+format: 
+  revealjs:
+    #theme: ["theme/q-theme.scss"]
+    slide-number: c/t
+    logo: "https://www.insp.mx/assets/images/insp.png"
+    footer: "[github.com/fdzul](https://github.com/fdzul)"
+    code-copy: true
+    center-title-slide: false
+highlight-style: a11y
+code-link: true
+height: 1080
+width: 1600
+execute: 
+  eval: true
+  echo: true
 ---
 
-## Quarto
+<h1>[Análisis Espacial del Dengue]{style="color:#003300;"}<br>en México</h1>
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+<h2> </h2>
 
-## Bullets
+<hr>
+<br> 
+<h3>Alumno</h3>
+<h3>[Dr. Felipe Dzul Manzanilla]{style="color:#620002;"} </h3>
+<br> 
+<h3>Director </h3>
+<h3>[Dr. Héctor Gómez-Dantés]{style="color:#620002;"}</h3>
+<h3>Co-directora </h3>
+<h3>Dra. Victoria Pando</h3>
+<h3> Date:   2024-08-22</h3>
 
-When you click the **Render** button a document will be generated that includes:
+<br> 
 
--   Content authored with markdown
--   Output from executable code
+![](){.absolute top="200" left="600" width="800"}
 
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
+```{r setup}
+#| echo: false
+library(sf)
+mapview::mapviewOptions(default = TRUE,
+                        basemaps.color.shuffle = FALSE)
 ```
+
+
+## [Hipótesis & Objetivo General]{style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+&nbsp;
+
+### Hipótesis
+
+La concordancia espacial entre el [binomio hotspots de la transmisión persistente-hotspots de la abundancia persistente del vector]() y el [trinomio cadenas de transmisión-hotspots de la abundancia-mapas de calor](), proporcionan un marco de estratificación para la [identificación de los escenarios epidemiológicos u operativos]() que permiten desarrollar un modelo estratégico de focalización para el control integrado de las arbovirosis.
+
+&nbsp;
+
+### Meta
+
+[Desarrollar un modelo estratégico de focalización del dengue en México.]()
+
+&nbsp;
+
+### Objetivo General
+
+[Realizar el Análisis Espacial de las Arbovirosis en México.]()
+
+
+## [Dios Botic]{style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+-   ***Bio*** : [https://fdzul.github.io/web_site_fadm/]()
+
+-   ***email*** : [felipe.dzul.m\@gmail.com]()
+
+-   ***celular*** : [9999580167]()
+
+-   ***slide***: [link](https://glowing-conkies-a3b760.netlify.app/talks/observaciones/#/)
