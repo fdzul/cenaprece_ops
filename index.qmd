@@ -114,64 +114,288 @@ denhotspots::map_risk(risk = risk,
 
 ::::
 
+## [1.Hotspots de la Transmisión Persistente de las Arbovirosis en Localidades Prioritarias]{.r-fit-text style="color:#003300;"}
 
-### [**Dashboard de los Mapas de Riesgo de Transmisión**]{style="color:#990000"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
-```{r dengue_risk_map}
-# Step 1. load the AGEE ####
-mex <- rgeomex::AGEE_inegi19_mx
+::: columns
+::: {.column style="width: 50%; font-size: 100%"}
+1.  Bajar las bases de datos del [SINAVE](https://www.sinave.gob.mx/).
+2.  Geocodificar las bases.
+3.  Bajar los shapefile del [INEGI](https://www.inegi.org.mx/).
+4.  Seleccionar la localidad de interes y extraer los AGEBs.
+5.  Contar el número de casos por AGEB.
+6.  Cálcular el Z-score de los casos.
+7.  Generar la matriz de adjacencias.
+8.  Cálcular el estadístico espacial local Getis&Ord $\color{#2ECC40}G_{\color{#2ECC40}i}^{\color{#2ECC40}*}$.
+9.  Realizar la la corrección de Bonferroni.
+10. Cálcular los hotspots.
+11. Visualizar los hotspots.
+:::
 
-# Step 3. make the tible link ####
-link <- tibble::tibble(CVE_ENT = c("02", "03", "10", "11",
-                                   "04","06","07","12", 
-                                   "14","16","17","18",
-                                   "20","23","24","25",
-                                   "26",
-                                   "27","28","30","31"),
-                       link = c("https://dazzling-taffy-ac0fd2.netlify.app",
-                                "https://fascinating-youtiao-a1f6f7.netlify.app",
-                                "https://preeminent-nougat-6307ee.netlify.app",
-                                "https://sparkly-concha-17d36d.netlify.app",
-                                
-                                
-                                "https://phenomenal-hotteok-02e188.netlify.app/",
-                                "https://silver-moxie-30857b.netlify.app",
-                                "https://adorable-tiramisu-303de1.netlify.app",
-                                "https://astounding-squirrel-94dd18.netlify.app/",
-                                
-                                "https://heartfelt-fudge-936865.netlify.app/",
-                                "https://fabulous-mermaid-31ea6a.netlify.app/",
-                                "https://glistening-griffin-b8023f.netlify.app/",
-                                "https://idyllic-granita-6918af.netlify.app/",
-                                
-                                "https://merry-figolla-08f5bf.netlify.app/",
-                                "https://helpful-pegasus-ba8bb9.netlify.app/",
-                                "https://wonderful-belekoy-db9c08.netlify.app/",
-                                "https://cosmic-dusk-10e889.netlify.app",
-                                
-                                "https://soft-donut-e34403.netlify.app",
-                            
-                                "https://capable-torrone-6eae7f.netlify.app/",
-                                "https://zingy-tarsier-e2570c.netlify.app/",
-                                "https://zippy-bunny-bdd8c7.netlify.app/",
-                                "https://keen-dango-d1cd7e.netlify.app/"))
+::: {.column style="width: 50%"}
+```{r, dpi=300,echo=FALSE, fig.align ="center", out.width = "100%"}
+DiagrammeR::grViz("digraph {
 
-# Step 3. left joint ####
-mex_link <- dplyr::left_join(x = link,
-                             y = mex,
-                             by = "CVE_ENT") |>
-    dplyr::mutate(Estado = paste0(": <a href=", 
-                                  link,">", 
-                                  NOMGEO, "</a>")) |>
-    as.data.frame() |>
-    sf::st_set_geometry(value = "geometry") 
+  # graph definitions
+  graph [layout = dot, rankdir = TB]
+  
+  # node definitions
+  node [shape = rectangle, style = filled, color = grey] 
+  
+  # flowchart for hotspots
+  sinave [label = 'SINAVE',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  denv [label = 'Bases de DENV',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  geocode [label = 'Geocodificación',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  cases_ageb [label = 'Casos por AGEBs']
+  z_score [label = 'Z-score']
+  gi [label = 'Estadístico Espacial Local (Gi*)']
+  bonferroni [label = 'Corrección de Bonferroni']
+  hotspots [label = 'Hotspots', style = filled, color = orange]
+  
+  # flow chart for inegi
+  inegi [label = 'INEGI', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  loc [label = 'Localidades Shapefile', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  ageb [label = 'AGEB Shapefile', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  loc_esp [label = 'Localidad de Ínteres', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  ageb_esp [label = 'AGEBs de la Localidad de Ínteres', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  mat [label = 'Matriz de Adjacencias', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  
+  # edge definitions with the node IDs
+  edge [color = black]
+  sinave -> denv -> geocode -> cases_ageb -> z_score -> gi -> bonferroni -> hotspots 
+  inegi -> {ageb, loc}
+  loc -> loc_esp -> ageb_esp
+  ageb -> ageb_esp
+  ageb_esp -> mat
+  mat -> cases_ageb 
+ 
+  }", 
+  heigh = "1000px",
+width = "800px")
 
-mex_link |>
-    mapview::mapview(popup = "Estado",
-                     legend = FALSE)
+```
+:::
+:::
+
+::: aside
+[Dzul-Manzanilla et al 2021](https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(21)00030-9/fulltext)
+:::
+
+
+## [2. Hotspots de Abundancia Persistente del Vector en Localidades Prioritarias]{style="color:#003300;" .r-fit-text}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+:::: {.columns}
+
+::: {.column style="width: 50%"}
+
+```{r, echo=FALSE,dpi=300,  fig.align ="center",out.height="100%", out.width = "90%"}
+DiagrammeR::grViz("digraph {
+
+  # graph definitions
+  graph [layout = dot, rankdir = TB]
+  
+  # node definitions
+  node [shape = rectangle, style = filled, color = grey] 
+  
+  edge [color = grey, arrowhead = normal, arrowtail = dot]
+  #
+  cenaprece [label = 'CENAPRECE',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  ovitrap [label = 'Ovitrampas',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  coord [label = 'Coordenadas',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  ovicoord [label = 'ovi + coord']
+  
+  # flow chart for inegi
+  inegi [label = 'INEGI', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  loc [label = 'Localidades Shapefile', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+
+  ###
+  mesh [label = '1. Mesh']
+  spde [label = '2. SPDE']
+  
+  proj_train [label = '3a. Projector Matrix A. Test']
+  proj_test [label = '3b. Projector Matrix A. Train']
+  
+  spatial_field [label = '4. Spatial Field W']
+  
+  stack_train [label = '5a. Stack Train']
+  stack_test [label = '5b. Stack Test']
+  stack_pred [label = '5c. Stack Prediction']
+  stack_joint [label = '6. Joint Stack']
+  
+  formula [label = '7. Formula']
+  inla [label = '8. INLA',  fillcolor = 'Orange', color = 'white', fontcolor = 'white']
+  
+ 
+  
+  # edge definitions with the node IDs
+  cenaprece -> {ovitrap, coord} -> ovicoord
+  #
+  inegi -> loc -> ovicoord
+  #
+  ovicoord -> mesh
+  mesh -> spde -> spatial_field ->  stack_joint
+  spde -> {proj_train,  proj_test}
+  spatial_field -> {stack_test, stack_train, stack_pred} ->  stack_joint -> formula -> inla 
+  proj_train -> stack_train
+  proj_test -> stack_test
+
+  
+  }", 
+  height = 900)
+
 ```
 
+:::
 
+::: {.column style="width: 50%"}
+
+```{r, echo=FALSE,dpi=300, fig.align ="center", out.height="100%", out.width = "90%"}
+DiagrammeR::grViz("digraph {
+
+  # graph definitions
+  graph [layout = dot, rankdir = TB]
+  
+  # node definitions
+  node [shape = rectangle, style = filled, color = grey] 
+  edge [color = grey, arrowhead = normal, arrowtail = dot]
+  
+  #
+  
+  inla [label = '8. INLA',  fillcolor = 'Orange', color = 'white', fontcolor = 'white']
+  stat [label = '9. Statistics']
+  
+  zeros [label = '9.1. % Zeros']
+  disp [label = '9.2. Dispersion Statistics']
+  dic [label = '9.3. Deviance Information Criterio']
+  pear [label = '9.4. Pearson Residuals']
+  
+  ##
+  p [label = 'Poisson']
+  zip [label = 'ZeroInflated Poisson']
+  nb [label = 'Negative Binomial']
+  zinb [label = 'ZeroInflated Poisson Negative Binomial']
+  
+  sel [label = '10.Select the Distribution & Model']
+  
+  # prediction ####
+  ext_pred [label = '11. Extract Index Prediction']
+  coor_pred [label = '12. Extract Coordinates Prediction']
+  pred [label = '13. Prediction']
+ 
+  hotspots [label = '14.Hotspots', fillcolor = 'Orange', color = 'white', fontcolor = 'white']
+  save [label = '15. Save results']
+  
+  mappred [label = '15a. Prediction Map']
+  hotspotsb [label = '15b. Hotspots']
+  dics [label = '15c. DICs']
+  loc [label = '15d. Locality']
+  data [label = '15e. Dataset']
+  
+  # edge definitions with the node IDs
+  inla -> stat
+  stat -> {zeros, disp, dic,pear} -> {p, zip, nb, zinb} -> sel
+  sel -> ext_pred -> coor_pred -> pred -> hotspots -> save
+  save -> {mappred, hotspotsb, dics, loc, data}
+
+  
+  }", 
+  height = 900)
+
+```
+:::
+
+::::
+
+::: aside
+[Modificado de Zuur et al 2017](http://www.highstat.com/index.php/beginner-s-guide-to-regression-models-with-spatial-and-temporal-correlation); [Dzul-Manzanilla et al 2019](https://www.researchgate.net/publication/338595327_HOTSPOTS_DE_Aedes_aegypti_EN_EL_AREA_METROPOLITANA_DE_VERACRUZ_MEXICO)
+:::
+
+
+## [Hotspots & Estadístico Espacial Local $\color{#2ECC40}G_{\color{#2ECC40}i}^{\color{#2ECC40}*}$ (Hotspots)]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+::: {.column style="width: 100%; font-size: 100%"}
+&nbsp;
+
+$$\color{#2ECC40}G_{\color{#2ECC40}i}^{\color{#2ECC40}*} = \frac{\color{#FF4136}\sum_{\color{#FF4136}j \color{#FF4136}= \color{#FF4136}1}^\color{#FF4136}{n} \color{#FF4136}w_{\color{#FF4136}i\color{#FF4136}j}\color{#FF4136}x_{\color{#FF4136}j}}
+{\color{#0074D9}\sum_{\color{#0074D   
+9}j \color{#0074D9}= \color{#0074D9}1}^{\color{#0074D9}n} \color{#0074D9}x_{\color{#0074D9}j}}$$
+
+donde:
+&nbsp;
+ 
+$\color{#FF4136}\sum_{\color{#FF4136}j \color{#FF4136}= \color{#FF4136}1}^\color{#FF4136}{n} \color{#FF4136}w_{\color{#FF4136}i\color{#FF4136}j}\color{#FF4136}x_{\color{#FF4136}j}$ el numerador, es la suma de los valores $x_{i}$ de la unidad espacial de interes con sus vecinos $x_{j}$ &
+ 
+ &nbsp;
+ 
+ $\frac{}{\color{#0074D9}\sum_{\color{#0074D9}j \color{#0074D9}= \color{#0074D9}1}^{\color{#0074D9}n} \color{#0074D9}x_{\color{#0074D9}j}}$ el denominador, es la suma de todos los valores $x$ en toda la localidad de interes.
+ &nbsp;
+ 
+**Hotspots** 
+son las áreas o las unidades espaciales con valores altos de $\color{#2ECC40}G_{\color{#2ECC40}i}^{\color{#2ECC40}*}$ y homogéneos de la unidad espaciales de interes $x_{ij}$. En otras palabras el estadístico espacial, identifica las unidades espaciales $x_{ij}$ con valores altos comparados con el valor promedio de todas la unidades espaciales en la localidad de interes.
+
+
+
+
+## [Avances de la Identificación de Escenarios Epidemiológicos]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
+:::: {.columns}
+
+::: {.column style="width: 33.3%; font-size: 90%"}
+|Estados Trabajados|
+|------------------|
+| [01 Aguascalientes](https://dashing-manatee-5aedb8.netlify.app)          | 
+| [02 Baja California](https://dazzling-taffy-ac0fd2.netlify.app)          |
+| [03 Baja California Sur](https://fascinating-youtiao-a1f6f7.netlify.app) |
+| [04 Campeche](https://phenomenal-hotteok-02e188.netlify.app)             | 
+| [05 Coahuila](https://strong-kelpie-ecc3ea.netlify.app)                  |
+| [06 Colima](https://silver-moxie-30857b.netlify.app)                     |
+| [07 Chiapas](https://adorable-tiramisu-303de1.netlify.app)               |
+| 08 Chihuahua                                                             |
+| [09 Ciudad de México](https://euphonious-crostata-930ad9.netlify.app)    |
+| [10 Durango](https://preeminent-nougat-6307ee.netlify.app)               |
+| [11 Guanajuato](https://sparkly-concha-17d36d.netlify.app)               |
+| [12 Guerrero](https://astounding-squirrel-94dd18.netlify.app)            |
+
+:::
+
+::: {.column style="width: 33.3%; font-size: 90%"}
+|Estados Trabajados|
+|------------------|
+| [13 Hidalgo](https://incredible-arithmetic-3dc5ed.netlify.app)           | 
+| [14 Jalisco](https://heartfelt-fudge-936865.netlify.app)                 |
+| [15 Estado de México](https://inquisitive-tartufo-8d5181.netlify.app)    |
+| [16 Michoacán](https://fabulous-mermaid-31ea6a.netlify.app)              |
+| [17 Morelos](https://glistening-griffin-b8023f.netlify.app)              |
+| [18 Nayarit](https://idyllic-granita-6918af.netlify.app)                 |
+| [19 Nuevo León](https://starlit-lolly-ad7d14.netlify.app)                |
+| [20 Oaxaca](https://merry-figolla-08f5bf.netlify.app)                    |
+| [21 Puebla](https://snazzy-figolla-e17977.netlify.app/#)                 |
+| 22 Queretaro                                                             |
+| [23 Quintana Roo](https://helpful-pegasus-ba8bb9.netlify.app)            |
+| [24 San Luis Potosí](https://wonderful-belekoy-db9c08.netlify.app)       |
+
+:::
+
+::: {.column style="width: 33.3%; font-size: 90%"}
+|Estados Trabajados|
+|------------------|
+| [25 Sinaloa](https://cosmic-dusk-10e889.netlify.app)                     |
+| [26 Sonora](https://soft-donut-e34403.netlify.app)                       |
+| [27 Tabasco](https://capable-torrone-6eae7f.netlify.app)                 |
+| [28 Tamaulipas](https://zingy-tarsier-e2570c.netlify.app)                |
+| 29 Tlaxcala                                                              |
+| [30 Veracruz](https://zippy-bunny-bdd8c7.netlify.app)                    |
+| [31 Yucatán](https://keen-dango-d1cd7e.netlify.app)                      |
+| [32 Zacatecas](https://mellifluous-banoffee-e28771.netlify.app)          |  
+
+:::
+
+::::
 ## [Desarrollo Conceptual del **Modelo Estratégico de Focalización del Dengue en México**]{.r-fit-text style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
