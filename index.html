@@ -343,11 +343,14 @@
 <h3>
 <span style="color:#620002;">Dr.&nbsp;Héctor Gómez-Dantés</span>
 </h3>
+<h3>
+<span style="color:#620002;">Dr.&nbsp;Fabián Correa-Morales</span>
+</h3>
 <br><br><br><h3>
 2024-09-09
 </h3>
 <p><br></p>
-<p><img data-src=".png" class="absolute" style="top: 250px; left: 600px; width: 800px; "></p>
+<p><img data-src="chains_ticul_2023.jpg" class="absolute" style="top: 250px; left: 600px; width: 800px; "></p>
 </section><section id="directrices-regionales-y-globales-de-los-escenarios-operativos" class="slide level2"><h2><span class="r-fit-text" style="color:#003300;">Directrices Regionales y Globales de los Escenarios Operativos</span></h2>
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019"></section><section id="desarrollo-conceptual-del-modelo-estratégico-de-focalización-del-dengue-en-méxico" class="slide level2"><h2><span class="r-fit-text" style="color:#003300;">Desarrollo Conceptual del <strong>Modelo Estratégico de Focalización del Dengue en México</strong></span></h2>
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
@@ -400,8 +403,8 @@
 </div><div class="column" style="width: 50%">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="htmlwidget-3a4c764b47f00e2fb155" style="width:800px;height:1000px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3a4c764b47f00e2fb155">{"x":{"diagram":"digraph {\n\n  # graph definitions\n  graph [layout = dot, rankdir = TB]\n  \n  # node definitions\n  node [shape = rectangle, style = filled, color = grey] \n  \n  # flowchart for hotspots\n  sinave [label = \"SINAVE\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  denv [label = \"Bases de DENV\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  geocode [label = \"Geocodificación\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  cases_ageb [label = \"Casos por AGEBs\"]\n  z_score [label = \"Z-score\"]\n  gi [label = \"Estadístico Espacial Local (Gi*)\"]\n  bonferroni [label = \"Corrección de Bonferroni\"]\n  hotspots [label = \"Hotspots\", style = filled, color = orange]\n  \n  # flow chart for inegi\n  inegi [label = \"INEGI\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  loc [label = \"Localidades Shapefile\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  ageb [label = \"AGEB Shapefile\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  loc_esp [label = \"Localidad de Ínteres\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  ageb_esp [label = \"AGEBs de la Localidad de Ínteres\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  mat [label = \"Matriz de Adjacencias\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  \n  # edge definitions with the node IDs\n  edge [color = black]\n  sinave -> denv -> geocode -> cases_ageb -> z_score -> gi -> bonferroni -> hotspots \n  inegi -> {ageb, loc}\n  loc -> loc_esp -> ageb_esp\n  ageb -> ageb_esp\n  ageb_esp -> mat\n  mat -> cases_ageb \n \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1c11c105840ccf2a3d54" style="width:800px;height:1000px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1c11c105840ccf2a3d54">{"x":{"diagram":"digraph {\n\n  # graph definitions\n  graph [layout = dot, rankdir = TB]\n  \n  # node definitions\n  node [shape = rectangle, style = filled, color = grey] \n  \n  # flowchart for hotspots\n  sinave [label = \"SINAVE\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  denv [label = \"Bases de DENV\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  geocode [label = \"Geocodificación\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  cases_ageb [label = \"Casos por AGEBs\"]\n  z_score [label = \"Z-score\"]\n  gi [label = \"Estadístico Espacial Local (Gi*)\"]\n  bonferroni [label = \"Corrección de Bonferroni\"]\n  hotspots [label = \"Hotspots\", style = filled, color = orange]\n  \n  # flow chart for inegi\n  inegi [label = \"INEGI\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  loc [label = \"Localidades Shapefile\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  ageb [label = \"AGEB Shapefile\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  loc_esp [label = \"Localidad de Ínteres\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  ageb_esp [label = \"AGEBs de la Localidad de Ínteres\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  mat [label = \"Matriz de Adjacencias\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  \n  # edge definitions with the node IDs\n  edge [color = black]\n  sinave -> denv -> geocode -> cases_ageb -> z_score -> gi -> bonferroni -> hotspots \n  inegi -> {ageb, loc}\n  loc -> loc_esp -> ageb_esp\n  ageb -> ageb_esp\n  ageb_esp -> mat\n  mat -> cases_ageb \n \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div></div>
@@ -414,15 +417,15 @@
 <div class="column" style="width: 50%">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="htmlwidget-602a24a658ccd8016554" style="width:90%;height:900px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-602a24a658ccd8016554">{"x":{"diagram":"digraph {\n\n  # graph definitions\n  graph [layout = dot, rankdir = TB]\n  \n  # node definitions\n  node [shape = rectangle, style = filled, color = grey] \n  \n  edge [color = grey, arrowhead = normal, arrowtail = dot]\n  #\n  cenaprece [label = \"CENAPRECE\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  ovitrap [label = \"Ovitrampas\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  coord [label = \"Coordenadas\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  ovicoord [label = \"ovi + coord\"]\n  \n  # flow chart for inegi\n  inegi [label = \"INEGI\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  loc [label = \"Localidades Shapefile\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n\n  ###\n  mesh [label = \"1. Mesh\"]\n  spde [label = \"2. SPDE\"]\n  \n  proj_train [label = \"3a. Projector Matrix A. Test\"]\n  proj_test [label = \"3b. Projector Matrix A. Train\"]\n  \n  spatial_field [label = \"4. Spatial Field W\"]\n  \n  stack_train [label = \"5a. Stack Train\"]\n  stack_test [label = \"5b. Stack Test\"]\n  stack_pred [label = \"5c. Stack Prediction\"]\n  stack_joint [label = \"6. Joint Stack\"]\n  \n  formula [label = \"7. Formula\"]\n  inla [label = \"8. INLA\",  fillcolor = \"Orange\", color = \"white\", fontcolor = \"white\"]\n  \n \n  \n  # edge definitions with the node IDs\n  cenaprece -> {ovitrap, coord} -> ovicoord\n  #\n  inegi -> loc -> ovicoord\n  #\n  ovicoord -> mesh\n  mesh -> spde -> spatial_field ->  stack_joint\n  spde -> {proj_train,  proj_test}\n  spatial_field -> {stack_test, stack_train, stack_pred} ->  stack_joint -> formula -> inla \n  proj_train -> stack_train\n  proj_test -> stack_test\n\n  \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-84a0758c991d06daab89" style="width:90%;height:900px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-84a0758c991d06daab89">{"x":{"diagram":"digraph {\n\n  # graph definitions\n  graph [layout = dot, rankdir = TB]\n  \n  # node definitions\n  node [shape = rectangle, style = filled, color = grey] \n  \n  edge [color = grey, arrowhead = normal, arrowtail = dot]\n  #\n  cenaprece [label = \"CENAPRECE\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  ovitrap [label = \"Ovitrampas\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  coord [label = \"Coordenadas\",  fillcolor = \"SeaGreen\", color = \"white\", fontcolor = \"white\"]\n  ovicoord [label = \"ovi + coord\"]\n  \n  # flow chart for inegi\n  inegi [label = \"INEGI\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n  loc [label = \"Localidades Shapefile\", fillcolor = \"DeepSkyBlue\", color = \"white\", fontcolor = \"black\"]\n\n  ###\n  mesh [label = \"1. Mesh\"]\n  spde [label = \"2. SPDE\"]\n  \n  proj_train [label = \"3a. Projector Matrix A. Test\"]\n  proj_test [label = \"3b. Projector Matrix A. Train\"]\n  \n  spatial_field [label = \"4. Spatial Field W\"]\n  \n  stack_train [label = \"5a. Stack Train\"]\n  stack_test [label = \"5b. Stack Test\"]\n  stack_pred [label = \"5c. Stack Prediction\"]\n  stack_joint [label = \"6. Joint Stack\"]\n  \n  formula [label = \"7. Formula\"]\n  inla [label = \"8. INLA\",  fillcolor = \"Orange\", color = \"white\", fontcolor = \"white\"]\n  \n \n  \n  # edge definitions with the node IDs\n  cenaprece -> {ovitrap, coord} -> ovicoord\n  #\n  inegi -> loc -> ovicoord\n  #\n  ovicoord -> mesh\n  mesh -> spde -> spatial_field ->  stack_joint\n  spde -> {proj_train,  proj_test}\n  spatial_field -> {stack_test, stack_train, stack_pred} ->  stack_joint -> formula -> inla \n  proj_train -> stack_train\n  proj_test -> stack_test\n\n  \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div><div class="column" style="width: 50%">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="htmlwidget-f62d32f4bb92d733ed61" style="width:90%;height:900px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f62d32f4bb92d733ed61">{"x":{"diagram":"digraph {\n\n  # graph definitions\n  graph [layout = dot, rankdir = TB]\n  \n  # node definitions\n  node [shape = rectangle, style = filled, color = grey] \n  edge [color = grey, arrowhead = normal, arrowtail = dot]\n  \n  #\n  \n  inla [label = \"8. INLA\",  fillcolor = \"Orange\", color = \"white\", fontcolor = \"white\"]\n  stat [label = \"9. Statistics\"]\n  \n  zeros [label = \"9.1. % Zeros\"]\n  disp [label = \"9.2. Dispersion Statistics\"]\n  dic [label = \"9.3. Deviance Information Criterio\"]\n  pear [label = \"9.4. Pearson Residuals\"]\n  \n  ##\n  p [label = \"Poisson\"]\n  zip [label = \"ZeroInflated Poisson\"]\n  nb [label = \"Negative Binomial\"]\n  zinb [label = \"ZeroInflated Poisson Negative Binomial\"]\n  \n  sel [label = \"10.Select the Distribution & Model\"]\n  \n  # prediction ####\n  ext_pred [label = \"11. Extract Index Prediction\"]\n  coor_pred [label = \"12. Extract Coordinates Prediction\"]\n  pred [label = \"13. Prediction\"]\n \n  hotspots [label = \"14.Hotspots\", fillcolor = \"Orange\", color = \"white\", fontcolor = \"white\"]\n  save [label = \"15. Save results\"]\n  \n  mappred [label = \"15a. Prediction Map\"]\n  hotspotsb [label = \"15b. Hotspots\"]\n  dics [label = \"15c. DICs\"]\n  loc [label = \"15d. Locality\"]\n  data [label = \"15e. Dataset\"]\n  \n  # edge definitions with the node IDs\n  inla -> stat\n  stat -> {zeros, disp, dic,pear} -> {p, zip, nb, zinb} -> sel\n  sel -> ext_pred -> coor_pred -> pred -> hotspots -> save\n  save -> {mappred, hotspotsb, dics, loc, data}\n\n  \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c3324dcf4e452a2b5e91" style="width:90%;height:900px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c3324dcf4e452a2b5e91">{"x":{"diagram":"digraph {\n\n  # graph definitions\n  graph [layout = dot, rankdir = TB]\n  \n  # node definitions\n  node [shape = rectangle, style = filled, color = grey] \n  edge [color = grey, arrowhead = normal, arrowtail = dot]\n  \n  #\n  \n  inla [label = \"8. INLA\",  fillcolor = \"Orange\", color = \"white\", fontcolor = \"white\"]\n  stat [label = \"9. Statistics\"]\n  \n  zeros [label = \"9.1. % Zeros\"]\n  disp [label = \"9.2. Dispersion Statistics\"]\n  dic [label = \"9.3. Deviance Information Criterio\"]\n  pear [label = \"9.4. Pearson Residuals\"]\n  \n  ##\n  p [label = \"Poisson\"]\n  zip [label = \"ZeroInflated Poisson\"]\n  nb [label = \"Negative Binomial\"]\n  zinb [label = \"ZeroInflated Poisson Negative Binomial\"]\n  \n  sel [label = \"10.Select the Distribution & Model\"]\n  \n  # prediction ####\n  ext_pred [label = \"11. Extract Index Prediction\"]\n  coor_pred [label = \"12. Extract Coordinates Prediction\"]\n  pred [label = \"13. Prediction\"]\n \n  hotspots [label = \"14.Hotspots\", fillcolor = \"Orange\", color = \"white\", fontcolor = \"white\"]\n  save [label = \"15. Save results\"]\n  \n  mappred [label = \"15a. Prediction Map\"]\n  hotspotsb [label = \"15b. Hotspots\"]\n  dics [label = \"15c. DICs\"]\n  loc [label = \"15d. Locality\"]\n  data [label = \"15e. Dataset\"]\n  \n  # edge definitions with the node IDs\n  inla -> stat\n  stat -> {zeros, disp, dic,pear} -> {p, zip, nb, zinb} -> sel\n  sel -> ext_pred -> coor_pred -> pred -> hotspots -> save\n  save -> {mappred, hotspotsb, dics, loc, data}\n\n  \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div></div>
@@ -444,7 +447,110 @@
 
 </div><aside><div>
 <p><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1538-4632.1992.tb00261.x">Getis &amp; Ord 1992</a>; <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1538-4632.1995.tb00912.x">Ord &amp; Getis 1995</a></p>
-</div></aside></section><section id="avances-de-la-identificación-de-escenarios-epidemiológicos" class="slide level2"><h2><span class="r-fit-text" style="color:#003300;">Avances de la Identificación de Escenarios Epidemiológicos</span></h2>
+</div></aside></section><section id="transmisión-persistente-abundancia-persistente-en-guadalajara-mérida" class="slide level2"><h2><span class="r-fit-text" style="color:#003300;">Transmisión Persistente &amp; Abundancia Persistente en Guadalajara &amp; Mérida</span></h2>
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 5px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+}
+</style>
+<h1>
+</h1>
+<p>
+</p>
+<div class="grid-container">
+<div class="grid-item">
+<p>Localidad</p>
+</div>
+<div class="grid-item">
+<p>Transmisión</p>
+</div>
+<div class="grid-item">
+<p>Vector</p>
+</div>
+<div class="grid-item">
+<p>Escenarios</p>
+</div>
+<div class="grid-item">
+<p>Mérida</p>
+</div>
+<div class="grid-item">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="index_files/figure-revealjs/hotspots_cases_merida-1.png" style="width:110.0%;height:110.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="grid-item">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="index_files/figure-revealjs/hotspots_vector_merida-1.png" style="width:110.0%;height:110.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="grid-item">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="index_files/figure-revealjs/risk_merida-1.png" style="width:110.0%;height:110.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="grid-item">
+<p>Guadalajara</p>
+</div>
+<div class="grid-item">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="index_files/figure-revealjs/hotspots_cases_guadalajara-1.png" style="width:110.0%;height:110.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="grid-item">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="index_files/figure-revealjs/hotspots_vector_guadalajara-1.png" style="width:110.0%;height:110.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="grid-item">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="index_files/figure-revealjs/risk_guadalajara-1.png" style="width:110.0%;height:110.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section><section id="avances-de-la-identificación-de-escenarios-epidemiológicos" class="slide level2"><h2><span class="r-fit-text" style="color:#003300;">Avances de la Identificación de Escenarios Epidemiológicos</span></h2>
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 <div class="columns">
 <div class="column" style="width: 33.3%; font-size: 90%">
