@@ -967,8 +967,8 @@ reactable::reactable(risk_gua,
 ```{r, echo=FALSE}
 # Step 1. load the eggs dataset ####
 x <- denmex::eggs_betas_14_jalisco |>
-    dplyr::mutate(long = x,
-                  lat = y) |>
+    dplyr::mutate(long = round(x, 4),
+                  lat = round(y, 4)) |>
     sf::st_as_sf(coords = c("long", "lat"),
                  crs = 4326)
 
@@ -1018,7 +1018,8 @@ x <- x |>
                        values_from = intensity) |>
     dplyr::mutate(intensidad = rowMeans(dplyr::across(dplyr::starts_with("2")))) |>
     dplyr::mutate(x = round(x, 2),
-                  y = round(x, 2)) |>
+                  y = round(x, 2),
+                  intensidad = round(intensidad, 1)) |>
     dplyr::select(x, y, intensidad)
 
 
