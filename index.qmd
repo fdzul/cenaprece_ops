@@ -16,24 +16,26 @@ execute:
   echo: true
 ---
 
-<h1>[Análisis Espacial del Dengue]{style="color:#003300;"}<br>en México</h1>
+<h2>[Escenarios Operativos para el abordaje de la prevención y control de *Aedes aegypti* y las arbovirosis humanas]{style="color:#003300;"}<br>en México</h2>
 
 <h2> </h2>
 
 <hr>
 <br> 
-<h3>Alumno</h3>
+<h3></h3>
 <h3>[Dr. Felipe Dzul Manzanilla]{style="color:#620002;"} </h3>
 <br> 
-<h3>Director </h3>
+<h3></h3>
 <h3>[Dr. Héctor Gómez-Dantés]{style="color:#620002;"}</h3>
-<h3>Co-directora </h3>
-<h3>Dra. Victoria Pando</h3>
-<h3> Date:   2024-08-22</h3>
+
+<br> 
+<br> 
+<br> 
+<h3> 2024-09-09</h3>
 
 <br> 
 
-![](){.absolute top="200" left="600" width="800"}
+![](){.absolute top="250" left="600" width="800"}
 
 ```{r setup}
 #| echo: false
@@ -42,27 +44,79 @@ mapview::mapviewOptions(default = TRUE,
                         basemaps.color.shuffle = FALSE)
 ```
 
-
-## [Hipótesis & Objetivo General]{style="color:#003300;"}
+## [Directrices Regionales y Globales de los Escenarios Operativos]{.r-fit-text style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
+
+## [Desarrollo Conceptual del **Modelo Estratégico de Focalización del Dengue en México**]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
+:::: {.columns}
+
+::: {.column style="width: 50%"}
+Concepto
+
+![](https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/mia/transmision_persistente.jpg?raw=true){.absolute right="800" height="815"}
+:::
+
+:::{.column style="width: 50%"}
+Mapa de riesgo
+<img src = "https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/spatial_analysis_dengue/fig/map_risk_guadalajara.jpg?raw=true">
+:::
+
+::::
+
+
+## [Definición de los Escenarios Operativos ó Epidemiológicos]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+:::: {.columns}
+
+::: {.column style="width: 40%;font-size: 100%"}
 &nbsp;
 
-### Hipótesis
-
-La concordancia espacial entre el [binomio hotspots de la transmisión persistente-hotspots de la abundancia persistente del vector]() y el [trinomio cadenas de transmisión-hotspots de la abundancia-mapas de calor](), proporcionan un marco de estratificación para la [identificación de los escenarios epidemiológicos u operativos]() que permiten desarrollar un modelo estratégico de focalización para el control integrado de las arbovirosis.
+<span style="color:#F44B1FFF;">Riesgo Muy Alto de Transmisión.</span> Hotposts de casos + hotspots del vector.
 
 &nbsp;
 
-### Meta
-
-[Desarrollar un modelo estratégico de focalización del dengue en México.]()
+<span style="color:#FF9000FF;">Riesgo Alto de Transmisión.</span> Hotspots de transmisión.
 
 &nbsp;
 
-### Objetivo General
+<span style="color:gold;">Riesgo Medio de Transmisión.</span>
+Hotspots del vector.
 
-[Realizar el Análisis Espacial de las Arbovirosis en México.]()
+&nbsp;
+
+<span style="color:#00F293FF;">Riesgo Bajo de Transmisión.</span>
+Sin hotspots de transmisión o hotspots del vector.
+
+:::
+
+::: {.column style="width: 60%"}
+```{r risk_merida2}
+#| fig-width: 10
+#| fig-height: 10
+#| echo: false
+# Step 1. calculate the risk ####
+risk <- denhotspots::risk_ageb(betas = denmex::eggs_betas_31_yucatan,
+                               hotspots = denmex::den_hotspots,
+                               intensity_perc = 25,
+                               locality = "Mérida",
+                               cve_edo = "31")
+
+# Step 2. map ####
+denhotspots::map_risk(risk = risk,
+                      staticmap = TRUE)
+```
+:::
+
+::::
+
+## [Desarrollo Conceptual del **Modelo Estratégico de Focalización del Dengue en México**]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
 
 
 ## [Dios Botic]{style="color:#003300;"}
