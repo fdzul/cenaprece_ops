@@ -1263,5 +1263,5 @@ ggplot2::ggplot() +
 
 -   ***celular*** : [9999580167]()
 
--   ***slide***: [link](https://app.netlify.com/sites/imaginative-licorice-e8a663/overview)
+-   ***slide***: [link](https://imaginative-licorice-e8a663.netlify.app/#/)
  
