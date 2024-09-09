@@ -22,6 +22,8 @@ execute:
 
 <hr>
 <br> 
+<br> 
+<br> 
 <h3></h3>
 <h3>[Dr. Felipe Dzul Manzanilla]{style="color:#620002;"} </h3>
 <br> 
@@ -64,9 +66,7 @@ Mapa de riesgo
 
 ::::
 
-Meta
-
-[Desarrollar un modelo estratégico de focalización del dengue en México.]()
+Meta: [Desarrollar un modelo estratégico de focalización del dengue en México.]()
 
 ## [Definición de los Escenarios Operativos ó Epidemiológicos]{.r-fit-text style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
@@ -1088,11 +1088,11 @@ reactable::reactable(risk_gua,
 ![](escenarios.png){fig-align="center"}
 
 
-## [Manejo Integrado de las Arbovirosis ]{style="color:#003300;"}
+## [Manejo Integrado de las Arbovirosis]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.cap="Figura 5. Ilustración esquemática del Manejo Integrado de las Arbovirosis en México."}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 # Step 1. load the dataset #####
 load("/Users/fdzul/Library/CloudStorage/OneDrive-Personal/automatic_read_sinave/8.RData/epid_channel_data.RData")
 
@@ -1240,6 +1240,19 @@ ggplot2::ggplot() +
 ```
 
 
+## [Manejo Integrado de las Arbovirosis]{style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+- [Definición de escenarios operativos o epimiológicos de la tranmisión activa](https://unrivaled-cranachan-34af05.netlify.app)
+
+- Manual del manejo integrado de las arbovirosis.
+
+- [Manual para la identificación de los hotspots de la tranmisión de dengue en R](https://fdzul.github.io/manual_hotspots/)
+
+- [Curso de Analisis espacial del dengue en R ](https://fdzul.github.io/spatial_analysis_dengue_R_2024/)
+
+- Desarrollo del [dengueverse](https://calm-hummingbird-41cb33.netlify.app/talks/dengueverse/#/): paquetes en R ([deneggs](https://fdzul.github.io/deneggs/), [denhotspots](https://fdzul.github.io/denhotspots/index.html), rgeomex, [densnv](https://fdzul.github.io/densnv/articles/mapas_de_calor.html), [popmex](https://fdzul.github.io/popmex/))
+
 
 ## [Dios Botic]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
@@ -1251,3 +1264,4 @@ ggplot2::ggplot() +
 -   ***celular*** : [9999580167]()
 
 -   ***slide***: [link](https://app.netlify.com/sites/imaginative-licorice-e8a663/overview)
+ 
