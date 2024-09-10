@@ -34,7 +34,7 @@ execute:
 <br> 
 <br> 
 <br> 
-<h3> 2024-09-09</h3>
+<h3> 2024-09-10</h3>
 
 <br> 
 
@@ -326,15 +326,15 @@ $$\color{#2ECC40}G_{\color{#2ECC40}i}^{\color{#2ECC40}*} = \frac{\color{#FF4136}
 donde:
 &nbsp;
  
-$\color{#FF4136}\sum_{\color{#FF4136}j \color{#FF4136}= \color{#FF4136}1}^\color{#FF4136}{n} \color{#FF4136}w_{\color{#FF4136}i\color{#FF4136}j}\color{#FF4136}x_{\color{#FF4136}j}$ el numerador, es la suma de los valores $x_{i}$ de la unidad espacial de interes con sus vecinos $x_{j}$ &
+$\color{#FF4136}\sum_{\color{#FF4136}j \color{#FF4136}= \color{#FF4136}1}^\color{#FF4136}{n} \color{#FF4136}w_{\color{#FF4136}i\color{#FF4136}j}\color{#FF4136}x_{\color{#FF4136}j}$ el numerador, es la suma de los valores $x_{i}$ de la unidad espacial de interés con sus vecinos $x_{j}$ &
  
  &nbsp;
  
- $\frac{}{\color{#0074D9}\sum_{\color{#0074D9}j \color{#0074D9}= \color{#0074D9}1}^{\color{#0074D9}n} \color{#0074D9}x_{\color{#0074D9}j}}$ el denominador, es la suma de todos los valores $x$ en toda la localidad de interes.
+ $\frac{}{\color{#0074D9}\sum_{\color{#0074D9}j \color{#0074D9}= \color{#0074D9}1}^{\color{#0074D9}n} \color{#0074D9}x_{\color{#0074D9}j}}$ el denominador, es la suma de todos los valores $x$ en toda la localidad de interés.
  &nbsp;
  
 **Hotspots** 
-son las áreas o las unidades espaciales con valores altos de $\color{#2ECC40}G_{\color{#2ECC40}i}^{\color{#2ECC40}*}$ y homogéneos de la unidad espaciales de interes $x_{ij}$. En otras palabras el estadístico espacial, identifica las unidades espaciales $x_{ij}$ con valores altos comparados con el valor promedio de todas la unidades espaciales en la localidad de interes.
+son las áreas o las unidades espaciales con valores altos de $\color{#2ECC40}G_{\color{#2ECC40}i}^{\color{#2ECC40}*}$ y homogéneos de la unidades espaciales de interés $x_{ij}$. En otras palabras el estadístico espacial, identifica las unidades espaciales $x_{ij}$ con valores altos comparados con el valor promedio de todas la unidades espaciales en la localidad de interes.
 
 ::: aside
 [Getis & Ord 1992](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1538-4632.1992.tb00261.x); [Ord & Getis 1995](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1538-4632.1995.tb00912.x)
@@ -1244,15 +1244,15 @@ ggplot2::ggplot() +
 ## [Manejo Integrado de las Arbovirosis]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
-- [Definición de escenarios operativos o epimiológicos de la tranmisión activa](https://unrivaled-cranachan-34af05.netlify.app)
+- [Definición de escenarios operativos o epimiológicos de la tranmisión activa](https://unrivaled-cranachan-34af05.netlify.app).
 
 - [Manual del manejo integrado de las arbovirosis en México](https://sunny-croquembouche-a7edeb.netlify.app).
 
-- [Manual para la identificación de los hotspots de la tranmisión de dengue en R](https://fdzul.github.io/manual_hotspots/)
+- [Manual para la identificación de los hotspots de la tranmisión de dengue en R](https://fdzul.github.io/manual_hotspots/).
 
-- [Curso de Analisis espacial del dengue en R ](https://fdzul.github.io/spatial_analysis_dengue_R_2024/)
+- [Curso de Analisis espacial del dengue en R ](https://fdzul.github.io/spatial_analysis_dengue_R_2024/).
 
-- Desarrollo del [dengueverse](https://calm-hummingbird-41cb33.netlify.app/talks/dengueverse/#/): paquetes en R ([deneggs](https://fdzul.github.io/deneggs/), [denhotspots](https://fdzul.github.io/denhotspots/index.html), rgeomex, [densnv](https://fdzul.github.io/densnv/articles/mapas_de_calor.html), [popmex](https://fdzul.github.io/popmex/))
+- Desarrollo del [dengueverse](https://calm-hummingbird-41cb33.netlify.app/talks/dengueverse/#/): paquetes en R ([deneggs](https://fdzul.github.io/deneggs/), [denhotspots](https://fdzul.github.io/denhotspots/index.html), rgeomex, [densnv](https://fdzul.github.io/densnv/articles/mapas_de_calor.html), [popmex](https://fdzul.github.io/popmex/)).
 
 
 ## [Dios Botic]{style="color:#003300;"}
